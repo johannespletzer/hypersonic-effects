@@ -1,15 +1,22 @@
 """Python file to read emission inventory files from the folder
    and return the radiative forcing in an excel file."""
 
+import sys
+
+try:
+    filepath = sys.argv[1]
+except IndexError:
+    print("\n\tFilepath required: \
+            python3 plot_emission_3d.py <filepath>\n")
+    sys.exit(1)
+
 from package import calculate_rf as rot
 from package import visualize as vis
 
 
 def main():
-    """Main code. Loads files and extracts labels, calculates
-    radiative forcing, writes to excel file."""
+    """Loads file and starts plotting procedure."""
 
-    filepath = "/work/bd1062/b309159/TUHH/STRATOFLY-MR3-2024/Emission_Inventory_NO_Optimized_v0.2_MR3_Fleet_BRU-MYA_2075.nc"
     emission_inventory = rot.EmissionInventory(filepath)
 
     df = emission_inventory.data
