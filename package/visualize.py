@@ -7,7 +7,7 @@ from mayavi import mlab
 from mayavi.sources.builtin_surface import BuiltinSurface
 
 
-def world3d(lat, lon, lev, var_s):
+def world3d(lat, lon, lev, var_s, save=False):
     """Plot Earth and atmosphere (not to scale) to visualize
     aircraft emissions in 3D"""
 
@@ -112,5 +112,7 @@ def world3d(lat, lon, lev, var_s):
     )
 
     # mlab.pipeline.volume(mlab.pipeline.gaussian_splatter(points))
+    if save:
+        mlab.savefig("./output_3d.png")
 
     mlab.show()
