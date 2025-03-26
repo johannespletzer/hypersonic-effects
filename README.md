@@ -21,7 +21,7 @@ The software can be installed via
 pip install -e .
 ```
 
-The repo contains two example notebooks for processing of emission inventories in mat- and nc-format. Otherwise, the user can various routines, e.g. one that reads all emission inventory files within the folder and returns the calculated radiative forcing in an xlsx file. Execute main.py with `python3 main.py <path_to_your_emission_files>`. 
+The repo contains two example notebooks for processing of emission inventories in mat- and nc-format. Otherwise, the user can various routines, e.g. one that reads all emission inventory files within the folder and returns the calculated radiative forcing in an xlsx file.  
 
 # Acknowledgements
 Daniel Bodmer contributed with validation of model results by offering current state of the art hypersonic aircraft emission inventories on trajectory and route network level: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10818082.svg )](https://doi.org/10.5281/zenodo.10818082 )
