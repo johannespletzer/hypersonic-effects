@@ -10,7 +10,7 @@ description = "Calculate the radiative forcing of hypersonic aircraft trajectori
 readme = "README.md"
 requires-python = ">=3.7"
 dependencies = [
-    "numpy",
+    "numpy<2.0",
     "pandas",
     "xarray",
     "scipy",
