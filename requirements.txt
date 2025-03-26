@@ -1,6 +1,6 @@
-numpy
 pandas
 xarray
+numpy
 scipy
 xlsxwriter
 netcdf4
