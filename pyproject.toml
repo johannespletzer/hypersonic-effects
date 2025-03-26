@@ -22,3 +22,9 @@ dependencies = [
 [project.urls]
 "Homepage" = "https://github.com/johannespletzer/rf-of-hypersonic-aircraft-emissions"
 "Repository" = "https://github.com/johannespletzer/rf-of-hypersonic-aircraft-emissions.git"
+
+[tool.setuptools]
+package-dir = {"" = "package"}
+
+[tool.setuptools.packages.find]
+where = ["package"] 
