@@ -1,0 +1,7 @@
+# ruff.toml
+line-length = 100
+exclude = ["build", "dist", ".cache"]
+
+[lint]
+select = ["E", "F", "I"]  # Errors, pyflakes, isort-style
+ignore = ["E501"]         # Ignore line-too-long
