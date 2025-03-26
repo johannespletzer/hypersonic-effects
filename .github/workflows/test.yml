@@ -15,16 +15,10 @@ jobs:
         with:
           python-version: "3.9"
 
-      - name: Install system dependencies for netCDF4
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libhdf5-dev libnetcdf-dev pkg-config
-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install numpy==1.26.4
-          pip install --no-binary :all: --force-reinstall netCDF4 scipy
+          pip install numpy pandas
           pip install -e .
       
       - name: Lint with Ruff
