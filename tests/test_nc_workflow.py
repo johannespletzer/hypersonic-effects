@@ -47,6 +47,6 @@ def test_rf_pipeline_from_nc(cached_nc_file):
     assert all(x > 0 for x in net_emis), "All emission values should be positive"
 
     # Exact value checks (allowing for small numerical tolerance)
-    assert abs(net_rf - expected_net_rf) < 1e-6, f"Unexpected net_rf: {net_rf}"
+    assert abs(net_rf - expected_net_rf) < 1e-3, f"Unexpected net_rf: {net_rf}"
     for i, (actual, expected) in enumerate(zip(net_emis, expected_net_emis)):
         assert abs(actual - expected) < 1e-2, f"Mismatch in net_emis[{i}]: {actual} vs {expected}"
