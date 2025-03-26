@@ -5,3 +5,8 @@ scipy
 xlsxwriter
 netcdf4
 aerocalc3
+pytest
+ruff
+pytest-cov
+build
+twine
