@@ -15,10 +15,13 @@ Interpolation (30-38 km) and extrapolation surface-30 km are used. It is recomme
 Please keep these limitations in mind when using the software.
 
 # Getting started
-The repo contains two example notebooks for processing of emission inventories in mat- and nc-format. Otherwise, the user can run the main.py executable which reads all emission inventory files within the folder and returns the calculated radiative forcing in an xlsx file. Execute main.py with `python3 main.py <path_to_your_emission_files>`. Please contact Johannes Pletzer for any questions.
+The software can be installed via 
 
-# Code quality
-The code was formatted according to PEP 8 style with the help of the modules 'flake8', 'isort', 'pylint' and 'black'.
+```bash
+pip install -e .
+```
+
+The repo contains two example notebooks for processing of emission inventories in mat- and nc-format. Otherwise, the user can various routines, e.g. one that reads all emission inventory files within the folder and returns the calculated radiative forcing in an xlsx file. Execute main.py with `python3 main.py <path_to_your_emission_files>`. 
 
 # Acknowledgements
 Daniel Bodmer contributed with validation of model results by offering current state of the art hypersonic aircraft emission inventories on trajectory and route network level: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10818082.svg )](https://doi.org/10.5281/zenodo.10818082 )
