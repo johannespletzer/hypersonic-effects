@@ -10,12 +10,12 @@ description = "Calculate the radiative forcing of hypersonic aircraft trajectori
 readme = "README.md"
 requires-python = ">=3.7"
 dependencies = [
-    "numpy==1.26.4",
+    "numpy",
     "pandas",
     "xarray",
     "scipy",
     "xlsxwriter",
-    "netcdf4==1.6.5",
+    "netcdf4",
     "aerocalc3",
     "pytest",
     "build",
