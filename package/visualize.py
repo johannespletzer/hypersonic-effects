@@ -12,14 +12,14 @@ def world3d(lat, lon, lev, var_s, save=False):
     aircraft emissions in 3D"""
 
     # define background & window size
-    mlab.figure(1, bgcolor=(1.0, 1.0, 1.0), fgcolor=(0, 0, 0), size=(900, 900))
+    mlab.figure(1, bgcolor=(1.0, 1.0, 1.0), fgcolor=(0, 0, 0), size=(2700, 2700))
 
     # clear current figure
     mlab.clf()
 
     # Earth radius & redefining altitude levels
     var_r = 6371
-    var_rdr = lev * 100 + var_r
+    var_rdr = lev * 300 + var_r
 
     # display a semi-transparent sphere, for the surface of the Earth,
     # the tropopause and the stratopause
@@ -45,7 +45,7 @@ def world3d(lat, lon, lev, var_s, save=False):
         0,
         0,
         scale_mode="none",
-        scale_factor=(var_r + 1500) * 2,
+        scale_factor=(var_r + 4500) * 2,
         color=(0.3, 0.5, 1.0),
         resolution=50,
         opacity=0.1,
@@ -57,7 +57,7 @@ def world3d(lat, lon, lev, var_s, save=False):
         0,
         0,
         scale_mode="none",
-        scale_factor=(var_r + 5000) * 2,
+        scale_factor=(var_r + 15000) * 2,
         color=(0.2, 0.77, 0.93),
         resolution=50,
         opacity=0.05,
@@ -106,12 +106,15 @@ def world3d(lat, lon, lev, var_s, save=False):
         var_s,
         scale_mode="none",
         mode="cube",
-        colormap="Reds",
+        colormap='Reds',
         scale_factor=0.04 * var_r,
-        opacity=0.5,
+        opacity=0.1,
+        resolution=20,
+        vmin=np.min(var_s)*2,
+        vmax=np.max(var_s)/2
     )
 
-    # mlab.pipeline.volume(mlab.pipeline.gaussian_splatter(points))
+    #mlab.pipeline.volume(mlab.pipeline.gaussian_splatter(pts))
     if save:
         mlab.savefig("./output_3d.png")
 
