@@ -26,7 +26,7 @@ def main():
     args = parser.parse_args()
 
     # Prepare data
-    data_frame = read_csv(args.infile)
+    data_frame = read_csv(args.infile, delimiter=',')
 
     # Plot data
     try:
