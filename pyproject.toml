@@ -16,7 +16,11 @@ dependencies = [
     "scipy",
     "xlsxwriter",
     "netcdf4",
-    "aerocalc3"
+    "aerocalc3",
+    "pytest",
+    "build",
+    "twine",
+    "ruff"
 ]
 
 [project.urls]
