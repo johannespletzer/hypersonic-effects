@@ -14,19 +14,6 @@ Interpolation (30-38 km) and extrapolation surface-30 km are used. It is recomme
 
 Please keep these limitations in mind when using the software.
 
-# Python environment requirements
-The software requires various functions from the following python modules:
-
-- numpy
-- pandas
-- xarray
-- scipy
-- xlsxwriter
-- netcdf4
-- aerocalc3
-
-Install the required packages with `pip install numpy pandas xarray scipy xlsxwriter netcdf4 aerocalc3`.
-
 # Getting started
 The repo contains two example notebooks for processing of emission inventories in mat- and nc-format. Otherwise, the user can run the main.py executable which reads all emission inventory files within the folder and returns the calculated radiative forcing in an xlsx file. Execute main.py with `python3 main.py <path_to_your_emission_files>`. Please contact Johannes Pletzer for any questions.
 
