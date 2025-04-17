@@ -14,7 +14,7 @@ def to_excel(labels, tot_rf, h2o_rf, o3_rf):
         "H2O RF [mW m-2]",
         "O3 RF [mW m-2]",
     ]
-    #data_frame.set_index("Emission file", inplace=True)
+    # data_frame.set_index("Emission file", inplace=True)
 
     # Write excel file
     writer = ExcelWriter("output_rf.xlsx")
@@ -31,9 +31,7 @@ def to_excel(labels, tot_rf, h2o_rf, o3_rf):
         column_length = max(data_frame[column].astype(str).map(len).max(), len(column))
         col_idx = data_frame.columns.get_loc(column) + 1
         try:
-            writer.sheets["Radiative Forcing"].set_column(
-                col_idx, col_idx, column_length
-            )
+            writer.sheets["Radiative Forcing"].set_column(col_idx, col_idx, column_length)
         except AttributeError:
             pass
 

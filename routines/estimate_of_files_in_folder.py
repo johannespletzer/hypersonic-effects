@@ -1,5 +1,5 @@
 """Python file to read emission inventory files from the folder
-   and return the radiative forcing in an excel file."""
+and return the radiative forcing in an excel file."""
 
 import sys
 from glob import glob
@@ -8,8 +8,8 @@ from package import calculate_rf as rot
 from package import to_excel as rte
 
 
-def main():
-    """Main code. Loads files and extracts labels, calculates
+def file_result_to_excel():
+    """Loads files and extracts labels, calculates
     radiative forcing, writes to excel file."""
 
     try:
@@ -42,5 +42,4 @@ def main():
     rte.to_excel(file_names, tot_rf, h2o_rf, o3_rf)
 
 
-if __name__ == "__main__":
-    main()
+file_result_to_excel()

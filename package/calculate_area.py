@@ -11,6 +11,7 @@ from xarray import DataArray
 
 EARTH_RADIUS = 6371000.0  # [m]
 
+
 def guess_interfaces(coordinate):
     """
     Calculate the interfaces of a coordinate given its midpoints.
@@ -31,14 +32,15 @@ def guess_interfaces(coordinate):
     last = 0.5 * (3 * coordinate.data[-1] - coordinate.data[-2])
 
     # Check limits
-    if coordinate.name.lower() in ['lat', 'latitude']:
-        first = sign(first) * min([abs(first), 90.])
-        last = sign(last) * min([abs(last), 90.])
+    if coordinate.name.lower() in ["lat", "latitude"]:
+        first = sign(first) * min([abs(first), 90.0])
+        last = sign(last) * min([abs(last), 90.0])
 
     interfaces = insert(interfaces, 0, first)
     interfaces = append(interfaces, last)
 
     return interfaces
+
 
 def calculate_area(latitude, longitude):
     """
@@ -65,13 +67,15 @@ def calculate_area(latitude, longitude):
     delta_x = abs(lon_i[1:] - lon_i[:-1])
     delta_y = abs(sin(lat_i[1:]) - sin(lat_i[:-1]))
 
-    output = outer(delta_y, delta_x) * EARTH_RADIUS ** 2
-    output = output.astype('float32')
+    output = outer(delta_y, delta_x) * EARTH_RADIUS**2
+    output = output.astype("float32")
 
-    result = DataArray(output, name='area',
-                       dims=(latitude.name, longitude.name),
-                       coords={latitude.name: latitude,
-                               longitude.name: longitude},
-                       attrs={'units': 'm2'})
+    result = DataArray(
+        output,
+        name="area",
+        dims=(latitude.name, longitude.name),
+        coords={latitude.name: latitude, longitude.name: longitude},
+        attrs={"units": "m2"},
+    )
 
     return result
