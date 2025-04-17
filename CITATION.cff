@@ -13,7 +13,7 @@ authors:
     family-names: Grewe
     affiliation: 'DLR, Germany; TU Delft, The Netherlands'
     orcid: 'https://orcid.org/0000-0002-8012-6783'
-title: rf-of-hypersonic-aircraft-emissions
+title: hypersonic-effects 
 message: >-
   If you use this software, please cite it using the
   metadata from this file.
@@ -32,5 +32,5 @@ keywords:
   - stratosphere
   - response model
 license: Apache-2.0
-version: '2.0'
+version: '2.1'
 cff-version: 1.2.0
