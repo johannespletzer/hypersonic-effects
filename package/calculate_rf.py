@@ -20,7 +20,6 @@ class EmissionInventory:
     for all others, which potentially introduces a large error."""
 
     def __init__(self, filepath):
-
         self.filepath = filepath
 
         self.resources_dir = path.join(path.dirname(__file__), "resources")
@@ -93,14 +92,10 @@ class EmissionInventory:
         data_frame["H2 [kg]"] = data_frame["H2"] * data_frame["dt"] / 1000
 
         # increase calculation speed by removing rows with zero emission
-        data_frame = data_frame[
-            data_frame[["H2 [kg]", "H2O [kg]", "NO [kg]"]].sum(axis=1) != 0
-        ]
+        data_frame = data_frame[data_frame[["H2 [kg]", "H2O [kg]", "NO [kg]"]].sum(axis=1) != 0]
 
         # filter final DataFrame
-        data_frame.drop(
-            ["Altitude [ft]", "H2O", "H2", "NO", "dt"], axis=1, inplace=True
-        )
+        data_frame.drop(["Altitude [ft]", "H2O", "H2", "NO", "dt"], axis=1, inplace=True)
 
         data_frame = data_frame.apply(to_numeric, downcast="float", errors="coerce")
 
@@ -122,9 +117,7 @@ class EmissionInventory:
         nc_file["Volume [km3]"] = nc_file["Area [km2]"] * nc_file.boxheight
 
         # calculate pressure levels
-        pa = [
-            alt2press(km, alt_units="km", press_units="pa") for km in nc_file.km.values
-        ]
+        pa = [alt2press(km, alt_units="km", press_units="pa") for km in nc_file.km.values]
         nc_file = nc_file.assign_coords({"Altitude [Pa]": ("alt", pa)})
 
         nc_file["H2O [kg]"] = nc_file["H2O"] * nc_file["Volume [km3]"]
@@ -140,9 +133,7 @@ class EmissionInventory:
         data_frame = nc_file.to_dataframe()
 
         # increase calculation speed by removing rows with zero emission
-        data_frame = data_frame[
-            data_frame[["H2 [kg]", "H2O [kg]", "NO [kg]"]].sum(axis=1) != 0
-        ]
+        data_frame = data_frame[data_frame[["H2 [kg]", "H2O [kg]", "NO [kg]"]].sum(axis=1) != 0]
         data_frame.reset_index(inplace=True)
 
         # rename columns
@@ -205,9 +196,7 @@ class EmissionInventory:
         )
 
         # clean DataFrame, remove variables
-        self.data.drop(
-            ["30 km", "38 km", var + " [30 km]", var + " [38 km]"], axis=1, inplace=True
-        )
+        self.data.drop(["30 km", "38 km", var + " [30 km]", var + " [38 km]"], axis=1, inplace=True)
 
     def remove_emission_normalization(self, emis, var):
         """This function calculates total values of emission weighted variables."""
@@ -235,14 +224,10 @@ class EmissionInventory:
 
             idx.index.rename(["lat", "lon", "alt"], inplace=True)
 
-            merged_idx = merge(
-                tropopause, idx, how="outer", left_index=True, right_index=True
-            )
+            merged_idx = merge(tropopause, idx, how="outer", left_index=True, right_index=True)
 
             tropopause_reidx = tropopause.reindex_like(merged_idx)
-            tropopause_reidx = (
-                tropopause_reidx.interpolate().reindex_like(idx).reset_index()
-            )
+            tropopause_reidx = tropopause_reidx.interpolate().reindex_like(idx).reset_index()
 
             tropopause_reidx.columns = [
                 "Latitude",
@@ -265,9 +250,7 @@ class EmissionInventory:
             )
         else:
             # drop data below altitude
-            self.data.drop(
-                self.data[self.data["Altitude [Pa]"] > alt * 100].index, inplace=True
-            )
+            self.data.drop(self.data[self.data["Altitude [Pa]"] > alt * 100].index, inplace=True)
 
     def o3_rf_from_h2o_emis(self):
         """This function calculates the ozone radiative
@@ -283,9 +266,7 @@ class EmissionInventory:
         self.vertical_interp("RF / Tg")
 
         # calculate radiative forcing
-        self.data["O3 RF from H2O [mW m-2]"] = self.remove_emission_normalization(
-            "H2O [kg]", "RF"
-        )
+        self.data["O3 RF from H2O [mW m-2]"] = self.remove_emission_normalization("H2O [kg]", "RF")
         self.data.drop(["RF / Tg"], axis=1, inplace=True)
 
         # clean and set dtype
@@ -305,9 +286,7 @@ class EmissionInventory:
         self.vertical_interp("RF / Tg")
 
         # radiative forcing
-        self.data["H2O RF from H2O [mW m-2]"] = self.remove_emission_normalization(
-            "H2O [kg]", "RF"
-        )
+        self.data["H2O RF from H2O [mW m-2]"] = self.remove_emission_normalization("H2O [kg]", "RF")
         self.data.drop(["RF / Tg"], axis=1, inplace=True)
 
         # clean and set dtype
@@ -326,9 +305,7 @@ class EmissionInventory:
         self.vertical_interp("RF / Tg")
 
         # calculate radiative forcing
-        self.data["O3 RF from H2 [mW m-2]"] = self.remove_emission_normalization(
-            "H2 [kg]", "RF"
-        )
+        self.data["O3 RF from H2 [mW m-2]"] = self.remove_emission_normalization("H2 [kg]", "RF")
         self.data.drop(["RF / Tg"], axis=1, inplace=True)
 
         # clean and set dtype
@@ -348,9 +325,7 @@ class EmissionInventory:
         self.vertical_interp("RF / Tg")
 
         # calculate radiative forcing
-        self.data["O3 RF from NO [mW m-2]"] = self.remove_emission_normalization(
-            "NO [kg]", "RF"
-        )
+        self.data["O3 RF from NO [mW m-2]"] = self.remove_emission_normalization("NO [kg]", "RF")
         self.data.drop(["RF / Tg"], axis=1, inplace=True)
 
         # clean and set dtype

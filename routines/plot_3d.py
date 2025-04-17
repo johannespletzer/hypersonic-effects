@@ -1,5 +1,5 @@
 """
-Script to visualize emission data in 3d using mayavi and allowing to take snapshots 
+Script to visualize emission data in 3d using mayavi and allowing to take snapshots
 """
 
 import argparse
@@ -26,7 +26,7 @@ def main():
     args = parser.parse_args()
 
     # Prepare data
-    data_frame = read_csv(args.infile, delimiter=',')
+    data_frame = read_csv(args.infile, delimiter=",")
 
     # Plot data
     try:
@@ -47,5 +47,4 @@ def main():
 
 
 if __name__ == "__main__":
-
     main()

@@ -106,15 +106,15 @@ def world3d(lat, lon, lev, var_s, save=False):
         var_s,
         scale_mode="none",
         mode="cube",
-        colormap='Reds',
+        colormap="Reds",
         scale_factor=0.04 * var_r,
         opacity=0.1,
         resolution=20,
-        vmin=np.min(var_s)*2,
-        vmax=np.max(var_s)/2
+        vmin=np.min(var_s) * 2,
+        vmax=np.max(var_s) / 2,
     )
 
-    #mlab.pipeline.volume(mlab.pipeline.gaussian_splatter(pts))
+    # mlab.pipeline.volume(mlab.pipeline.gaussian_splatter(pts))
     if save:
         mlab.savefig("./output_3d.png")
 

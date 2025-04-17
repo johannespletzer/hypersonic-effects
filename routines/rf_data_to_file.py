@@ -1,5 +1,5 @@
 """Python file to read emission inventory files from the folder
-   and return the radiative forcing in an excel file."""
+and return the radiative forcing in an excel file."""
 
 import sys
 
@@ -27,5 +27,4 @@ def main():
 
 
 if __name__ == "__main__":
-
     main()
