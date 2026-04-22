@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.52818422188.svg )](https://doi.org/10.5281/zenodo.8422188 )
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8422188.svg )](https://doi.org/10.5281/zenodo.8422188 )
 
 # Radiative forcing of hypersonic aircraft emission inventories
 The software quantifies climate impact of hypersonic aircraft emission inventories as a number and within seconds instead of very long numerical simulations that produce Petabytes of data. The input requires water vapor, hydrogen and nitrogen oxide emission data along flight trajectories.
